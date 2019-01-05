@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="fr">
+<head>
+	<title>Dota 2 based invoker game</title>
+	<meta name="description" content="A mini game that mimic Invoker character's gameplay from Dota 2 (by Valve)" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Language" content="fr" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<link href="./css/style.css" rel="stylesheet" type="text/css" />
+	<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link rel="shortcut icon" type="image/png" href="./img/favicon.png" />
+</head>
+
+<body>
+<header id="header">
+	<ul>
+		<li>
+			<a id="keys" href=""><i class="icon-cog"></i> Configure your keys</a>
+		</li>
+		<li>
+			<a id="visual" href=""><i class="icon-lightbulb"></i> Active visual help</a>
+		</li>
+		<li class="right">
+			<div id="points"> <span>0</span> Points</div>
+		</li>
+		<li class="right">
+			<div id="combo_points"> combo! <span>0</span></div>
+		</li>
+	</ul>
+</header>
+
+<main id="wrapper">
+
+	<aside id="message">
+		<div>
+			<a class="close">x</a>
+
+			<h2>
+				Rules
+			</h2>
+
+			<p>
+				- first step: configure yours keys ! (top menu)<br />
+				- press start to launch the game<br />
+				- compose the highlighted skill and press the ULTI button to show it<br />
+				- use your skill 4 or 5 to activate a memorized skill<br />
+				- launch the skill on the blue target (mouseleft)<br />
+				<br />
+				- One mistake (when you clic the target) break your combo and take one of your 5 life away<br />
+				<br />
+				<span>Skills combo</span><br />
+				- when a skill combo (blue) appear, do the skills in the order (left to right).<br />
+				- The combo dont give you points but a temporary score multiplicator.<br />
+			</p>
+		</div>
+	</aside>
+
+	<section class="left">
+		<div id="affichage_skills">
+
+			<div id="skill">
+				<span>key skill 4</span>
+			</div>
+			<div id="skill_secondaire">
+				<span>key skill 5</span>
+			</div>
+
+			<ul id="champs">
+				<li>q</li>
+				<li>s</li>
+				<li>d</li>
+			</ul>
+		</div>
+
+		<div id="target">
+
+		</div>
+	</section>
+
+	<section id="liste_defis">
+		<div class="fleche">
+			<i class="icon-arrow-right"></i>
+		</div>
+		<h2 id="start">
+			Start
+		</h2>
+		<div class="chargement"><span>-</span> sec</div>
+		<ul id="liste">
+		</ul>
+	</section>
+
+</main>
+
+<script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="./js/monjquery.js"></script>
+</body>
+</html>
