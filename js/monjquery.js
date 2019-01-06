@@ -354,37 +354,37 @@ $("#target").mouseup(function(){
 //////////////////////////////////////////////////////////////////////////////////////
 // Edit keybinding
 //////////////////////////////////////////////////////////////////////////////////////
-$("#keys").click(function(){
+$("#keys_binding_btn").click(function(){
 	var touche = 1;
 	$("body").unbind('keydown');
 
-	$("#message h2").html("configure your keys");
-	$("#message p").html("Press the key for <span>skill 1</span>");
+	$("#message_content").empty();
+	$("#message_content").html("<h2>configure your keys</h2><p>Press the key for <span>skill 1</span></p>");
+
 	$("#message").slideDown();
 
 	$("body").keydown(function(e){
 		var code = (e.keyCode ? e.keyCode : e.which);
 
-		$("#message p").html("Press the key for <span>skill "+(touche+1)+"</span>");
-
 		if(touche==1){
 			skill1=code
+			$("#message p").html("Press the key for <span>skill "+(touche+1)+"</span>");
 		}
 		if(touche==2){
 			skill2=code
+			$("#message p").html("Press the key for <span>skill "+(touche+1)+"</span>");
 		}
 		if(touche==3){
 			skill3=code
+			$("#message p").html("Press the key for <span>skill "+(touche+1)+"</span>");
 		}
 		if(touche==4){
 			skill4=code
+			$("#message p").html("Press the key for <span>skill "+(touche+1)+"</span>");
 		}
 		if(touche==5){
 			skill5=code
 			$("#message p").html("Press the key for <span>ULTI</span>");
-		}
-		if(touche==6){
-			ulti=code
 		}
 
 		touche++;
