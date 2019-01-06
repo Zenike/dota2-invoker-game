@@ -18,3 +18,7 @@ Click here to start the game
 ## I don't know the spells already...
 
 No problem, just activate the "Active visual help" option on the top of the screen. That will show you the elements used in each spell.
+
+## But i prefer quickcast !
+
+I got you, a quickcast option exist in the top menu. Once activated, the keys 4 and 5 immediatly trigger the spell. No more mouse click needed !
