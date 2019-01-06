@@ -14,8 +14,8 @@ Click here to start the game
 - ghost walk and forge spirit will instacast without click (like ingame)
 - you have the possibility to double tap alacrity
 
-- One mistake (when you click the target) break your combo and take one of your 5 lifes away
-- be carefull that you can't reinvoke a spell already in your set. If you do, you will lose a life. Instead, use them directly with key 4 or key 5 without reinvoking
+- A mistake will break your combo and take one of your 5 lifes away
+- be advised that you can't reinvoke a spell already in your set. If you do, you will lose a life. Instead, use them directly with key 4 or key 5 without reinvoking
 
 ## I don't know the spells already...
 
