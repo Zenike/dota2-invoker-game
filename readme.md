@@ -11,6 +11,8 @@ Click here to start the game
 - activate the highlighted skill and press the ULTI button to show it
 - use your skill 4 or 5 to activate a memorized skill
 - launch the skill on the blue target (mouseleft)
+- ghost walk and forge spirit will instacast without click (like ingame)
+- you have the possibility to double tap alacrity
 
 - One mistake (when you click the target) break your combo and take one of your 5 lifes away
 - be carefull that you can't reinvoke a spell already in your set. If you do, you will lose a life. Instead, use them directly with key 4 or key 5 without reinvoking
