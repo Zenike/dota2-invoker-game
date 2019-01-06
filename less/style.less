@@ -192,6 +192,7 @@ margin-left: 20px;
 background-position: top left;
 cursor: pointer;
 position: relative;
+font-size: 0;
 }
 #target.quickcast {
 line-height: 200px;
@@ -204,9 +205,9 @@ text-shadow: 0 0 10px red;
 	&:hover {
 	background-position: top left;
 	}
-	&.quickcast_activated {
-	background-position: top right;
-	}
+}
+#target.fastactivation {
+background-position: top right !important;
 }
 #target:hover {
 background-position: bottom left;

@@ -90,6 +90,8 @@ function skill_touch(e){
 		if(spell_case_index==4){
 			spell_case_index=1;
 		}
+
+		$("#primary_skill,#secondary_skill").removeClass("press");
 	}
 
 	// if the code = ulti key, do something
@@ -159,37 +161,69 @@ function skill_touch(e){
 
 	// if the code = key 4 or 5
 	if(code==skill4 || code==skill5){
-		$("#primary_skill,#secondary_skill").removeClass("press");
-
 		if(code==skill4){
-			skill_key = "#primary_skill"
-			$("#primary_skill").addClass("press");
-			// if quickcast, fire instantly
-			if(quickcast == 1) {
-				fire_on_target();
+			// if already activated, it's a double press
+			if($("#primary_skill").is(".press")) {
+				double_press("#primary_skill");
 			}
+
+			skill_key = "#primary_skill"
+
+			$("#secondary_skill").removeClass("press");
+			$("#primary_skill").addClass("press");
 		}
 		if(code==skill5){
-			skill_key = "#secondary_skill"
-			$("#secondary_skill").addClass("press");
-			// if quickcast, fire instantly
-
-		}
-		if(code==skill5 || code==skill4) {
-			if(quickcast == 1) {
-				fire_on_target();
-
-				$("#target").addClass("quickcast_activated");
-
-				var remove_quickcast_activated = setInterval(function () {
-					$("#target").removeClass("quickcast_activated");
-
-					clearInterval(remove_quickcast_activated);
-				}, 100);
+			// if already activated, it's a double press
+			if($("#secondary_skill").is(".press")) {
+				double_press("#secondary_skill");
 			}
+
+			skill_key = "#secondary_skill"
+
+			$("#primary_skill").removeClass("press");
+			$("#secondary_skill").addClass("press");
+		}
+		// if quickcast, fire instantly
+		if(quickcast == 1) {
+			fire_on_target();
+			fast_activation();
+		}
+		// some skills instant cast (just like quickcast)
+		if($(skill_key).is(".ghost-walk")) {
+			fire_on_target();
+			fast_activation();
+		}
+		if($(skill_key).is(".forge-spirit")) {
+			fire_on_target();
+			fast_activation();
 		}
 	}
 };
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Double Press
+//////////////////////////////////////////////////////////////////////////////////////
+function double_press(key) {
+	if($(key).is(".alacrity")) {
+		fire_on_target();
+		fast_activation();
+	}
+}
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Fast activation (visual only)
+//////////////////////////////////////////////////////////////////////////////////////
+function fast_activation() {
+	$("#target").addClass("fastactivation");
+
+	var remove_quickcast_activated = setInterval(function () {
+		$("#target").removeClass("fastactivation");
+
+		clearInterval(remove_quickcast_activated);
+	}, 100);
+}
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -297,8 +331,23 @@ function fire_on_target() {
 	}
 }
 
-$("#target").click(function(){
-	fire_on_target();
+$("#target").mousedown(function(){
+	var activated_key = $("#spells_display .press");
+	// first, test if the key is not null or undefined
+	if(activated_key.length > 0) {
+		if(activated_key.is(".ghost-walk")) {
+			// don't trigger, it's only an instancast spell
+		} else if(activated_key.is(".forge-spirit")) {
+			// don't trigger, it's only an instancast spell
+		} else {
+			fire_on_target();
+			$(this).addClass("press");
+		}
+	}
+});
+
+$("#target").mouseup(function(){
+	$(this).removeClass("press");
 });
 
 
@@ -475,17 +524,6 @@ $("#start").click(function(){
 //////////////////////////////////////////////////////////////////////////////////////
 $("#message .close").click(function(){
 	$("#message").slideUp();
-});
-
-
-//////////////////////////////////////////////////////////////////////////////////////
-// target button visual effects
-//////////////////////////////////////////////////////////////////////////////////////
-$("#target").mousedown(function(){
-	$(this).addClass("press");
-});
-$("#target").mouseup(function(){
-	$(this).removeClass("press");
 });
 
 
