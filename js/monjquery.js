@@ -2,7 +2,7 @@ $(document).ready(function() {
 
 
 //////////////////////////////////////////////////////////////////////////////////////
-// preloading
+// preloading images
 //////////////////////////////////////////////////////////////////////////////////////
 function preload(arrayOfImages) {
 	$(arrayOfImages).each(function(){
@@ -45,17 +45,11 @@ var life;
 var skill_random;
 var historique1;
 var historique2;
-var historique3;
-var historique4;
-var historique5;
 var historique1_txt;
 var historique2_txt;
-var historique3_txt;
-var historique4_txt;
-var historique5_txt;
 var skill_key = 0;
 
-var i = 1;
+var spell_case_index = 1;
 var item;
 var game = 0;
 
@@ -67,10 +61,6 @@ var game = 0;
 // press any key to start the test
 $("body").keydown(function(e){
 	skill_touch(e);
-	return false;
-});
-$("body").keyup(function(e){
-	skill_touch_release(e);
 	return false;
 });
 
@@ -91,10 +81,14 @@ function skill_touch(e){
 			item = "exort";
 		}
 
-		$("#keys_set li:nth-child("+i+")").removeClass();
-		$("#keys_set li:nth-child("+i+")").addClass(item);
-		i++;
-		if(i==4){i=1}
+		$("#keys_set li:nth-child(" + spell_case_index + ")").removeClass();
+		$("#keys_set li:nth-child(" + spell_case_index + ")").addClass(item);
+
+		spell_case_index++;
+
+		if(spell_case_index==4){
+			spell_case_index=1;
+		}
 	}
 
 	// if the code = ulti key, do something
@@ -152,12 +146,6 @@ function skill_touch(e){
 		}
 
 		// keep old success in history..
-		historique5 = historique4;
-		historique5_txt = historique4_txt;
-		historique4 = historique3;
-		historique4_txt = historique3_txt;
-		historique3 = historique2;
-		historique3_txt = historique2_txt;
 		historique2 = historique1;
 		historique2_txt = historique1_txt;
 		historique1 = $("#primary_skill").attr("class");
@@ -166,11 +154,6 @@ function skill_touch(e){
 		// ... and use this to complete the secondary spell zone
 		$("#secondary_skill span").html(historique2_txt);
 		$("#secondary_skill").addClass(historique2);
-
-		// check if history makes a combo
-		if(historique3 == "cold-snap" && historique2 == "sun-strike" && historique1 == "alacrity"){
-			$("#primary_skill").addClass("combo1");
-		}
 	}
 
 	// if the code = key 4 or 5
@@ -185,11 +168,6 @@ function skill_touch(e){
 			$("#secondary_skill").addClass("press");
 		}
 	}
-};
-
-// when a key is released
-function skill_touch_release(e){
-	var code = (e.keyCode ? e.keyCode : e.which);
 };
 
 
@@ -372,10 +350,10 @@ function add_defi(nbr){
 	for(var i=0;i<nbr;i++){
 		var skill_precedent = skill_random;
 
-		skill_random = Math.ceil(Math.random()*11);
+		skill_random = Math.ceil(Math.random()*10);
 
 		if(skill_random==skill_precedent){
-			skill_random = Math.ceil(Math.random()*11);
+			skill_random = Math.ceil(Math.random()*10);
 		}
 
 		var combo = 0;
@@ -392,15 +370,10 @@ function add_defi(nbr){
 		else if(skill_random==8){skill_name="ice-wall";skill_name_text="Ice wall";}
 		else if(skill_random==9){skill_name="sun-strike";skill_name_text="Sun strike";}
 		else if(skill_random==10){skill_name="tornado";skill_name_text="Tornado";}
-		else if(skill_random==11){skill_name="combo1";skill_name_text="Solo target combo !";combo=1;}
 
-		if(combo==1){
-			$("#questions_list").append("<li id='combo' class='"+skill_name+"'><span>"+skill_name_text+"</span></li>");
-			$("#questions_list li:last-child").append("<div id='s1' class='cold-snap'></div><div id='s2' class='sun-strike'></div><div id='s3' class='alacrity'></div>");
-		}else{
-			$("#questions_list").append("<li class='"+skill_name+"'><span>"+skill_name_text+"</span></li>");
-			$("#questions_list li:last-child").append("<div class='o1'></div><div class='o2'></div><div class='o3'></div>");
-		}
+
+		$("#questions_list").append("<li class='"+skill_name+"'><span>"+skill_name_text+"</span></li>");
+		$("#questions_list li:last-child").append("<div class='o1'></div><div class='o2'></div><div class='o3'></div>");
 	}
 }
 add_defi(10);

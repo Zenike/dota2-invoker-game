@@ -13,8 +13,4 @@ Click here to start the game
 - launch the skill on the blue target (mouseleft)
 
 - One mistake (when you click the target) break your combo and take one of your 5 lifes away
-
-## Skills combos
-
-- when a skill combo (blue) appears, do the differents skills in order (left to right).
-- The combo doesn't give you points but a temporary score multiplicator.
+- be carefull that you can't reinvoke a spell already in your set. If you do, you will lose a life. Instead, use them directly with key 4 or key 5 without reinvoking
