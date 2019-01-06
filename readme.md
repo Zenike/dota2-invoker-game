@@ -14,3 +14,7 @@ Click here to start the game
 
 - One mistake (when you click the target) break your combo and take one of your 5 lifes away
 - be carefull that you can't reinvoke a spell already in your set. If you do, you will lose a life. Instead, use them directly with key 4 or key 5 without reinvoking
+
+## I don't know the spells already...
+
+No problem, just activate the "Active visual help" option on the top of the screen. That will show you the elements used in each spell.
