@@ -386,6 +386,9 @@ $("#keys_binding_btn").click(function(){
 			skill5=code
 			$("#message p").html("Press the key for <span>ULTI</span>");
 		}
+		if(touche==6){
+			ulti=code
+		}
 
 		touche++;
 
