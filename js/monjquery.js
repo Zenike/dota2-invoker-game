@@ -42,6 +42,7 @@ var points;
 var combo;
 var reponses;
 var life;
+var quickcast = 0;
 var skill_random;
 var historique1;
 var historique2;
@@ -159,13 +160,33 @@ function skill_touch(e){
 	// if the code = key 4 or 5
 	if(code==skill4 || code==skill5){
 		$("#primary_skill,#secondary_skill").removeClass("press");
+
 		if(code==skill4){
 			skill_key = "#primary_skill"
 			$("#primary_skill").addClass("press");
+			// if quickcast, fire instantly
+			if(quickcast == 1) {
+				fire_on_target();
+			}
 		}
 		if(code==skill5){
 			skill_key = "#secondary_skill"
 			$("#secondary_skill").addClass("press");
+			// if quickcast, fire instantly
+
+		}
+		if(code==skill5 || code==skill4) {
+			if(quickcast == 1) {
+				fire_on_target();
+
+				$("#target").addClass("quickcast_activated");
+
+				var remove_quickcast_activated = setInterval(function () {
+					$("#target").removeClass("quickcast_activated");
+
+					clearInterval(remove_quickcast_activated);
+				}, 100);
+			}
 		}
 	}
 };
@@ -257,7 +278,7 @@ function echec_time(){
 	}
 }
 
-$("#target").click(function(){
+function fire_on_target() {
 	if(game==1 && skill_key!=0){
 		if($(skill_key).hasClass($("#questions_list>li:first-child").attr("class"))){
 			valider_et_enlever();
@@ -274,6 +295,10 @@ $("#target").click(function(){
 		$("#primary_skill,#secondary_skill").removeClass("press");
 		skill_key = 0;
 	}
+}
+
+$("#target").click(function(){
+	fire_on_target();
 });
 
 
@@ -336,9 +361,27 @@ $("#keys").click(function(){
 // visual help
 //////////////////////////////////////////////////////////////////////////////////////
 $("#visual").click(function(){
-	$(".o1").show();
-	$(".o2").show();
-	$(".o3").show();
+	if($("#questions_list").is(".visual_help_on")) {
+		$("#questions_list").removeClass("visual_help_on");
+	} else {
+		$("#questions_list").addClass("visual_help_on");
+	}
+	return false;
+});
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+// Quickcast
+//////////////////////////////////////////////////////////////////////////////////////
+$("#quickcast_btn").click(function(){
+	if(quickcast == 0) {
+		quickcast = 1;
+		$("#target").addClass("quickcast");
+	} else {
+		quickcast = 0;
+		$("#target").removeClass("quickcast");
+	}
+
 	return false;
 });
 
