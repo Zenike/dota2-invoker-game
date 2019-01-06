@@ -144,7 +144,7 @@ margin: auto;
 background-image: url(../img/black_trans.png);
 height: 100%;
 }
-ul#champs {
+ul#keys_set {
 overflow: hidden;
 	li {
 	float: left;
@@ -175,7 +175,7 @@ overflow: hidden;
 .left {
 float: left;
 }
-#affichage_skills {
+#spells_display {
 background-image: url(../img/white_trans.png);
 padding: 10px;
 margin-top: 20px;
@@ -198,7 +198,7 @@ background-position: bottom left;
 #target.press {
 background-position: top right;
 }
-#skill {
+#primary_skill {
 margin: 5px;
 margin-left: 5px;
 width: 128px;
@@ -216,14 +216,14 @@ border: 2px solid #000;
 	width: 100%;
 	}
 }
-#skill.press {
+#primary_skill.press {
 border: 2px solid @bleu;
 .shadow(#000,0px,0px,0px);
 	span {
 	color: @bleu;
 	}
 }
-#skill_secondaire {
+#secondary_skill {
 width: 60px;
 height: 60px;
 background-color: @jaune;
@@ -244,7 +244,7 @@ border: 1px solid #000;
 	font-size: 8px;
 	}
 }
-#skill_secondaire.press {
+#secondary_skill.press {
 border: 1px solid @bleu;
 	span {
 	color: @bleu;
@@ -311,12 +311,12 @@ background-image: url(../img/skills/tornado.png);
 	.o3{background-image: url(../img/quas.png);}
 }
 
-#liste_defis {
+#questions_column {
 float: right;
 margin-top: 20px;
 margin-right: 15px;
 position: relative;
-	.fleche {
+	.active_arrow {
 	color: #fff;
 	position: absolute;
 	left: -30px;
@@ -392,7 +392,7 @@ position: relative;
 	background: linear-gradient(to bottom,  rgba(201,54,56,1) 0%,rgba(188,52,52,1) 50%,rgba(181,0,3,1) 51%,rgba(255,63,66,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c93638', endColorstr='#ff3f42',GradientType=0 );
 	}
-	.chargement {
+	.loading_bar {
 	width: 100%;
 	height: 10px;
 	font-size: 9px;
@@ -411,11 +411,11 @@ position: relative;
 	background: linear-gradient(to bottom,  rgba(191,210,85,1) 0%,rgba(142,185,42,1) 50%,rgba(114,170,0,1) 51%,rgba(158,203,45,1) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bfd255', endColorstr='#9ecb2d',GradientType=0 );
 	}
-	.chargement.gameover {
+	.loading_bar.gameover {
 	visibility: hidden;
 	}
 	ul {
-	overflow: hidden; 
+	overflow: hidden;
 		li:first-child {
 		background-color: @mauve;
 		border: 1px dashed #fff;
@@ -511,4 +511,4 @@ position: relative;
 		background: @mauve;
 		}
 	}
-}/* liste_defis */
+}
